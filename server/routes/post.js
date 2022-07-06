@@ -41,9 +41,9 @@ router
     }
   })
 
-  .delete('/delete', async (req, res) => {
+  .delete('/delete/:id', async (req, res) => {
     try {
-      await Post.deletePost(req.body.id);
+      await Post.deletePost(req.params.id);
       res.send({ success: "Post deleted" });
     } catch(error) {
       res.status(401).send({ message: error.message });

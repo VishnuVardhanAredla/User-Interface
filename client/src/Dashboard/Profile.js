@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { deltetData, getData, postData } from "../Fetch";
-import moment from "moment";
+import moment from  'moment';
 import { Navbar } from "../Header/Navbar";
 
 export const Profile = () => {
@@ -50,7 +50,7 @@ export const Profile = () => {
 
   const deletePost = (id) => {
     setLoading(true);
-    deltetData(`/posts/${id}`, "DELETE")
+    deltetData(`/post/delete/${id}`, "DELETE")
       .then((data) => {
         let filtredData = posts.filter((post) => {
           return post._id != id;
@@ -131,8 +131,11 @@ export const Profile = () => {
                               style={{ fontSize: "24px" }}
                             ></i>
                             <i
+                              onClick={()=>{
+                                deletePost(post._id)
+                              }}
                               class="fa fa-trash-o ms-1"
-                              style={{ fontSize: "24px" }}
+                              style={{ fontSize: "24px",cursor:"pointer" }}
                             ></i>
                           </div>
                         </div>

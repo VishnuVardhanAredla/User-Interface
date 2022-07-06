@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { postData } from "../Fetch";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2'
+
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -35,6 +37,11 @@ export const Login = () => {
         console.log(data);
       })
       .catch((error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.message,
+        })
         console.log(error);
       });
   };

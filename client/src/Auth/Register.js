@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { postData } from "../Fetch";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -36,22 +37,28 @@ export const Register = () => {
         console.log(data);
       })
       .catch((error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.message,
+        })
+
         console.log(error);
       });
   };
 
   return (
-    // <div class="container h-100">
-    //   <div class="row align-items-center h-100">
-    //     <div class="col-md-4"></div>
-    //     <div class="col-md-4 h-100">
-    //       <div class="card p-4 rounded mt-4">
+    // <div className="container h-100">
+    //   <div className="row align-items-center h-100">
+    //     <div className="col-md-4"></div>
+    //     <div className="col-md-4 h-100">
+    //       <div className="card p-4 rounded mt-4">
     //         <h3>Register</h3>
     //         <form onSubmit={onSubmit}>
-    //           <div class="row mt-4">
+    //           <div className="row mt-4">
     //             <input
     //               type="name"
-    //               class="form-control"
+    //               className="form-control"
     //               placeholder="Enter userName"
     //               name="userName"
     //               required=""
@@ -59,31 +66,31 @@ export const Register = () => {
     //             />
     //           </div>
 
-    //           <div class="row mt-4">
+    //           <div className="row mt-4">
     //             <input
     //               type="email"
-    //               class="form-control"
+    //               className="form-control"
     //               placeholder="Enter email"
     //               name="email"
     //               required=""
     //               onChange={onChange}
     //             />
     //           </div>
-    //           <div class="row mt-4">
+    //           <div className="row mt-4">
     //             <input
     //               type="password"
-    //               class="form-control"
+    //               className="form-control"
     //               placeholder="Enter password"
     //               name="password"
     //               onChange={onChange}
     //               required=""
     //             />
     //           </div>
-    //           <div class="row mt-4">
+    //           <div className="row mt-4">
     //             <button
     //               type="submit"
     //               value="submit"
-    //               class="btn btn btn-primary w-auto"
+    //               className="btn btn btn-primary w-auto"
     //             >
     //               Register
     //             </button>
@@ -91,22 +98,22 @@ export const Register = () => {
     //         </form>
     //       </div>
     //     </div>
-    //     <div class="col-md-4"></div>
+    //     <div className="col-md-4"></div>
     //   </div>
     // </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-          <div class="card border-0 shadow rounded-3 my-3">
-            <div class="card-body p-4 p-sm-5">
-              <h5 class="card-title text-center mb-4 fw-light fs-5">
+    <div className="container">
+      <div className="row">
+        <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
+          <div className="card border-0 shadow rounded-3 my-3">
+            <div className="card-body p-4 p-sm-5">
+              <h5 className="card-title text-center mb-4 fw-light fs-5">
                 Register
               </h5>
               <form onSubmit={onSubmit}>
-                <div class="form-floating mb-3">
+                <div className="form-floating mb-3">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="userName"
                     placeholder="Enter username"
                     name="userName"
@@ -115,10 +122,10 @@ export const Register = () => {
                   />
                   <label for="userName">userName</label>
                 </div>
-                <div class="form-floating mb-3">
+                <div className="form-floating mb-3">
                   <input
                     type="email"
-                    class="form-control"
+                    className="form-control"
                     id="email"
                     name="email"
                     onChange={onChange}
@@ -126,45 +133,44 @@ export const Register = () => {
                   />
                   <label for="email">Email address</label>
                 </div>
-                <div class="form-floating mb-3">
+                <div className="form-floating mb-3">
                   <input
                     type="password"
                     name="password"
                     onChange={onChange}
-                    class="form-control"
+                    className="form-control"
                     id="floatingPassword"
                     placeholder="Password"
                   />
                   <label for="floatingPassword">Password</label>
                 </div>
 
-                <div class="form-check mb-3">
+                <div className="form-check mb-3">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="checkbox"
                     value=""
                     id="rememberPasswordCheck"
                   />
-                  <label class="form-check-label" for="rememberPasswordCheck">
+                  <label className="form-check-label" for="rememberPasswordCheck">
                     Remember password
                   </label>
                 </div>
-                <div class="d-grid">
+                <div className="d-grid">
                   <button
-                    class="btn btn-primary btn-login text-uppercase fw-bold"
+                    className="btn btn-primary btn-login text-uppercase fw-bold"
                     type="submit"
-                    value="submit"
                   >
-                    Sign in
+                    Register
                   </button>
                 </div>
-                <hr class="my-4" />
-                <div class="d-grid mb-2">
+                <hr className="my-4" />
+                <div className="d-grid mb-2">
                   <button
-                    class="btn btn-google btn-login text-uppercase fw-bold"
+                    className="btn btn-google btn-login text-uppercase fw-bold"
                     type="submit"
                   >
-                    <i class="fab fa-google me-2"></i> Sign in with Google
+                    <i className="fab fa-google me-2"></i> Sign in with Google
                   </button>
                 </div>
               </form>
