@@ -14,12 +14,17 @@ mongoose.connect(process.env.mongoURI)
 
 app.use(express.json());
 
-app.use(express.static(__dirname + "/client/build"));
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/client/build', 'index.html')));
+app.use(express.static("client/build"));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
+
+// app.use(express.static(__dirname + "/client/build"));
+// app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/client/build', 'index.html')));
 // app.use(express.static(__dirname + "/public"));
 // app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/public', 'index.html')));
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin,X-Requested-Width,Content-Type,Accept,Authorization");
   res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS")
